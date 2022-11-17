@@ -25,8 +25,8 @@ function HomePage({ isConnected, users, lastPong, lastName, sendPing, socket }: 
       <h1>Users:</h1>
       <div>
         <ul>
-        {users.map((el) => {
-          return <li>
+        {users.map((el, idx) => {
+          return <li key={idx}>
             <b>{el.name}</b> ({el.date})
           </li>
           }

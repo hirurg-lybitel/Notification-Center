@@ -17,11 +17,18 @@ export function Nav(props: NavProps) {
   useEffect(() => {
     // socket.on("message", (data: any) => setNotifications(data));
 
-    socket?.on("pong", (data: any) => setNotifications(data));
-    socket?.on("users", (data: any) => setUsers(data));
-  }, [socket]);
+    console.log('useEffect', socket);
 
-  console.log('notifications', notifications);
+    socket?.on("pong", (data: any) => setNotifications(data));
+    socket?.on('connect', () => {
+      console.log('connected');
+    });
+    socket?.on("users", (data: any) => {
+      console.log('users');
+      setUsers(data)
+    });
+
+  }, [socket]);
 
   return (
     <nav className={styles['navbar']}>
@@ -42,7 +49,7 @@ export function Nav(props: NavProps) {
             </div>
             : <div>{'No notifications for you :('}</div>} */}
 
-          {users?.map(u => <div className={styles['notifyItem']}>{`User ${u.name} connected at ${new Date(u.date).toLocaleTimeString('default', { hour: '2-digit', minute: '2-digit' })}`}</div>)}
+          {users?.map((u, idx) => <div key={idx} className={styles['notifyItem']}>{`User ${u.name} connected at ${new Date(u.date).toLocaleTimeString('default', { hour: '2-digit', minute: '2-digit' })}`}</div>)}
         </div>
       </div>
     </nav>
