@@ -1,0 +1,32 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+
+.navbar {
+    display: flex;
+}
+
+.empty {
+    flex: 1;
+}
+
+.notifyContent {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    border: 0.1rem solid black;
+    width: 300px;
+    height: 400px;
+    overflow: auto;
+    background-Color: white;
+    padding: 5px;
+}
+
+.notifyItem {
+    padding: 5px;
+}
